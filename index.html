@@ -1,10 +1,56 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Zuno Cafe</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zuno Café | Sip the Soul, Taste the Story</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <h1>Welcome to Zuno Cafe ☕</h1>
-  <p>Sip the Soul, Taste the Story.</p>
+  <header>
+    <h1>Zuno Café</h1>
+    <p class="tagline">Sip the Soul, Taste the Story</p>
+    <nav>
+      <a href="#menu">Menu</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section id="menu">
+    <h2>Our Menu</h2>
+    <div id="menu-list"></div>
+  </section>
+
+  <section id="gallery" class="gallery">
+    <h2>Gallery</h2>
+    <img src="https://source.unsplash.com/400x300/?coffee" alt="Coffee">
+    <img src="https://source.unsplash.com/400x300/?cafe" alt="Cafe">
+    <img src="https://source.unsplash.com/400x300/?barista" alt="Barista">
+  </section>
+
+  <section id="contact">
+    <h2>Order on WhatsApp</h2>
+    <p>📱 <a href="https://wa.me/918798049062">+91 8798049062</a></p>
+  </section>
+
+  <footer>
+    Made with ❤️ by Zuno Café, Assam
+  </footer>
+
+  <script>
+    // Load menu from menu.json
+    fetch('menu.json')
+      .then(response => response.json())
+      .then(data => {
+        const menuList = document.getElementById('menu-list');
+        data.forEach(item => {
+          const div = document.createElement('div');
+          div.className = 'menu-item';
+          div.innerHTML = `<span>${item.name}</span><span>${item.price}</span>`;
+          menuList.appendChild(div);
+        });
+      });
+  </script>
 </body>
 </html>
